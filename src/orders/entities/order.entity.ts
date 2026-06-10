@@ -1,6 +1,6 @@
 import {
 Product
-} from 'src/products/entities/product.entity';
+} from '../../products/entities/product.entity';
 import {
 Column,
 Entity,
@@ -9,7 +9,7 @@ PrimaryGeneratedColumn
 } from 'typeorm';
 import {
 User
-} from 'src/users/entities/user.entity';
+} from '../../users/entities/user.entity';
 
 export enum StatusOrder{
     PENDING='PENDING',
