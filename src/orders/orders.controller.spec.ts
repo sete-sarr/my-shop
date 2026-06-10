@@ -5,6 +5,9 @@ import { PaginationService } from '../common/pagination/pagination.service';
 import { Order } from './entities/order.entity';
 import { Product } from '../products/entities/product.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import{PaginationService
+} from '../common/pagination/pagination.service';
+
 
 
 describe('OrdersController', () => {
@@ -19,11 +22,12 @@ describe('OrdersController', () => {
         {
           provide: getRepositoryToken(Order),
           useValue: {},
-        },
+        }
+        ,
         {
           provide: getRepositoryToken(Product),
           useValue: {},
-        },
+        }
       ],  
     }).compile();
 

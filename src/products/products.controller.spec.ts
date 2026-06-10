@@ -3,6 +3,9 @@ import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
+import{PaginationService
+} from '../common/pagination/pagination.service';
+
 
 describe('ProductsController', () => {
   let controller: ProductsController;
@@ -12,6 +15,7 @@ describe('ProductsController', () => {
       controllers: [ProductsController],
       providers: [
         ProductsService,
+        PaginationService,
         {
           provide: getRepositoryToken(Product),
           useValue: {},

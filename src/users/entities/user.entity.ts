@@ -6,6 +6,7 @@ import {
 } from 'typeorm';
 
 import { Order } from '../../orders/entities/order.entity';
+import {ApiProperty} from '@nestjs/swagger'
 
 // =========================
 // ENUMS
@@ -25,18 +26,22 @@ export class User {
   // =========================
   // PRIMARY KEY
   // =========================
+  @ApiProperty({ description: 'User ID' })
   @PrimaryGeneratedColumn('uuid')
   id?: string;
 
   // =========================
   // BASIC FIELDS
   // =========================
+  @ApiProperty({ description: 'User Email' })
   @Column({ unique: true })
   email?: string;
 
+  @ApiProperty({ description: 'User Username' })
   @Column({ unique: true })
   username!: string;
 
+  @ApiProperty({ description: 'User Password' })
   @Column()
   password!: string;
 
@@ -45,6 +50,8 @@ export class User {
   // =========================
 //   @OneToMany(() => Order, (order) => order.customer)
 //   orders: Order[];
+
+  @ApiProperty({ description: 'User Orders' })
   @OneToMany(()=>Order, (order)=>order.customer)
   orders?:Order[];
 
@@ -53,6 +60,7 @@ export class User {
   reviews: Review[];
   */
 
+  @ApiProperty({ description: 'User Role' })
   // =========================
   // ROLE
   // =========================
@@ -63,7 +71,7 @@ export class User {
    })
    role!: UserRole;
 
-  
+  @ApiProperty({ description: 'User Creation Date' })
   @Column({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',
